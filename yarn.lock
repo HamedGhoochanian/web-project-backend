@@ -245,7 +245,7 @@
 
 "@nestjs/swagger@^5.2.1":
   version "5.2.1"
-  resolved "https://registry.npmjs.org/@nestjs/swagger/-/swagger-5.2.1.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.2.1.tgz#0fbd5dbc84aeebc2912009cce1309d4bebe9a52c"
   integrity sha512-7dNa08WCnTsW/oAk3Ujde+z64JMfNm19DhpXasFR8oJp/9pggYAbYU927HpA+GJsSFJX6adjIRZsCKUqaGWznw==
   dependencies:
     "@nestjs/mapped-types" "1.0.1"
@@ -3016,7 +3016,7 @@ swagger-ui-dist@>=4.11.0:
 
 swagger-ui-express@^4.4.0:
   version "4.4.0"
-  resolved "https://registry.npmjs.org/swagger-ui-express/-/swagger-ui-express-4.4.0.tgz"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-4.4.0.tgz#4c50c51a092075588f173b2c3a5c830f07b6b44e"
   integrity sha512-1CzRkHG386VQMVZK406jcpgnW2a9A5A/NiAjKhsFTQqUBWRF+uGbXTU/mA7WSV3mTzyOQDvjBdWP/c2qd5lqKw==
   dependencies:
     swagger-ui-dist ">=4.11.0"
