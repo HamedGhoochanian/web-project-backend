@@ -4,6 +4,8 @@ services:
     build: .
     image: 'store-api:latest'
     container_name: store-api
+    ports:
+      - 80:80
     networks:
       - store
     logging:
