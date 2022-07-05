@@ -3,8 +3,7 @@ RUN apk add --no-cache tzdata
 ENV TZ Asia/Tehran
 RUN mkdir -p /home/node/app
 WORKDIR /home/node/app
-COPY package.json ./
-COPY package-lock.json ./
+COPY package.json yarn.lock ./
 RUN npm install
 COPY . .
 ENV NODE_ENV production

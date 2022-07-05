@@ -13,6 +13,6 @@ services:
         max-file: "10"
     restart: unless-stopped
 networks:
-  saba:
+  store:
     external:
       name: store
