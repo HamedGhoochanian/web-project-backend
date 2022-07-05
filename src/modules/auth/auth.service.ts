@@ -1,14 +1,15 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from '../../schemas';
+import { User, UserDocument, UserRole } from '../../schemas';
 import { Model } from 'mongoose';
 import { LoginDto } from './dto/login.dto';
 import { INVALID_CREDENTIALS } from './messages';
-import { hashSync } from 'bcryptjs';
 import { plainToInstance } from 'class-transformer';
 import { LoginResponse } from './dto/login-response.dto';
-import {JwtPayload} from "./dto/jwt-payload.interface";
+import { JwtPayload } from './dto/jwt-payload.interface';
+import { genSaltSync, hashSync } from 'bcryptjs';
+import { SignupResDto } from './dto/signupRes.dto';
 
 @Injectable()
 export class AuthService {
@@ -41,6 +42,25 @@ export class AuthService {
       },
     };
     return plainToInstance(LoginResponse, responsePayload);
+  }
+
+  public async signup(payload) {
+    const salt = genSaltSync(parseInt(process.env.SALT, 10));
+    const passwordHash = hashSync(payload.password, salt);
+    const createdUser = await new this.userModel({
+      passwordHash,
+      name: payload.name,
+      cellphone: payload.cellphone,
+      roles: [UserRole.User],
+    }).save();
+    const jwt = this.generateToken(createdUser);
+    return plainToInstance(
+      SignupResDto,
+      { jwt },
+      {
+        excludeExtraneousValues: true,
+      },
+    );
   }
 
   generateToken(user: User): string {
